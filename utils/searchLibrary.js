@@ -80,7 +80,9 @@ const buildFile = function (fileName, fPath, toPath) {
         // 创建新文件夹
         fs.mkdirSync(`${toPath}/${newPath}`);
         // 将当前的文件拷贝到新文件夹中
-        fs.renameSync(fPath, `${toPath}/${newPath}/${newTitle}`);
+        fs.copyFileSync(fPath, `${toPath}/${newPath}/${newTitle}`);
+        // 删除当前文件
+        fs.unlinkSync(fPath);
       }
 
       // 或者封面图的DOM
